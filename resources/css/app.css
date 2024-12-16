@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    height: 100%;
+}
+
+.container-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    @apply dark:bg-slate-900 dark:text-white bg-slate-300 text-gray-800;
+}
+
+#main {
+    @apply flex-1;
+}
+
+.glass-effect {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(0.4rem);
+}
+
+.glass-effect-menu {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(0.4rem);
+}
+
+.menu-header {
+    @apply flex flex-row justify-between p-2;
+}
+
+.item-menu {
+    @apply p-2 block my-auto;
+    text-align: center;
+}
+
+.log-in-button {
+    @apply rounded-3xl px-4 py-2;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.header-static {
+    /* @apply flex justify-center; */
+}
+
+.header-fixed {
+    @apply fixed left-0 top-0 z-10 w-full bg-transparent p-4 text-white;
+}
+
+.center {
+    @apply flex justify-center;
+}
+
+.test {
+    @apply text-5xl font-extrabold uppercase text-white rounded-3xl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+    gap: 20px;
+    height: 500px;
+}
+
+.dashboard-widget {
+    border: 1px solid #ddd;
+
+    padding: 10px;
+
+    position: relative;
+}
+
+.dashboard-widget button {
+    position: absolute;
+
+    top: 5px;
+
+    right: 5px;
+}
+
+.dashboard-available-widgets {
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.counter{
+    border-radius: 999999px;
+}
+.photo-doctor{
+    border-radius:50%;
+}
