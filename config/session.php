@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'driver' => env('VITE_SESION_DRIVER', 'database'),
+    'driver' => env('SESION_DRIVER', 'cookie'),
 
     /*
     |--------------------------------------------------------------------------
