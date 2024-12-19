@@ -1,10 +1,10 @@
 export default function ListAppointments({ appointments }) {
     return (
-        <div>
+        <div  className="content-table">
             {appointments && appointments.length > 0 ? (
-                <table>
+                <table className="w-full">
                     <thead>
-                        <tr>
+                        <tr className="cabecera">
                             <th>Cita</th>
                             <th>Doctor</th>
                             <th>Paciente</th>
@@ -15,11 +15,11 @@ export default function ListAppointments({ appointments }) {
 
                     <tbody>
                         {appointments.map((appointment, index) => (
-                            <tr key={index}>
+                            <tr key={index} className="contenido">
                                 <td>{appointment.id}</td>
                                 <td>{appointment.doctor?.fullname}</td>
                                 <td>{appointment.patient?.fullname}</td>
-                                <td>{appointment.date}</td>
+                                <td>{appointment.date || "Sin Agenda"}</td>
                                 <td>{appointment.status}</td>
                             </tr>
                         ))}

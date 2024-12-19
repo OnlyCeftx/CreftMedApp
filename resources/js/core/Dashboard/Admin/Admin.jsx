@@ -21,7 +21,7 @@ export default function Admin({}) {
     }, []);
     return (
         <>
-            <h3>Panel de Administrador</h3>
+            <h3 className="font-bold text-4xl">Panel de Administrador</h3>
 
             <p>Aquí puedes gestionar usuarios y citas.</p>
             <DoctorsList />

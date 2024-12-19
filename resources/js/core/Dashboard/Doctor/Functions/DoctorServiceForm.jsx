@@ -72,12 +72,13 @@ export default function DoctorServiceForm({ doctor, onUpdate }) {
     }
     return (
         <>
-            <div className="container">
-                <h1>Agregar Servicio a Doctor</h1>
+            <div className="p-2 bg-gray-300 rounded">
+                <h3 className="font-bold fs-">Configurar Servicios</h3>
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor="service_id">Servicio</label>
                         <select
+                            className="w-full"
                             id="service_id"
                             value={data.service_id}
                             onChange={handleServiceChange}
@@ -96,6 +97,7 @@ export default function DoctorServiceForm({ doctor, onUpdate }) {
                     <div>
                         <label htmlFor="price">Precio</label>
                         <input
+                            className="w-full"
                             type="number"
                             id="price"
                             value={data.price}
@@ -106,13 +108,15 @@ export default function DoctorServiceForm({ doctor, onUpdate }) {
                         )}
                     </div>
 
-                    {data.id}
-                    <button
-                        type="submit"
-                        className="bg-green-600 p-2 rounded text-white my-2"
-                    >
-                        Agregar Servicio
-                    </button>
+                    {/* {data.id} */}
+                    <div className="flex">
+                        <button
+                            type="submit"
+                            className="bg-green-600 p-2 rounded text-white my-2 w-full"
+                        >
+                            Agregar Servicio
+                        </button>
+                    </div>
                 </form>
             </div>
         </>

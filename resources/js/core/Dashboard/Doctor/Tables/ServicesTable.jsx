@@ -1,9 +1,9 @@
 export default function ServicesTable({ services }) {
     return (
-        <>
-            <table>
+        <div className="content-table">
+            <table className="w-full">
                 <thead>
-                    <tr>
+                    <tr className="cabecera">
                         <td>id</td>
                         <td>Servicio</td>
                         <td>Precio</td>
@@ -12,15 +12,19 @@ export default function ServicesTable({ services }) {
                 </thead>
                 <tbody>
                     {services.map((service) => (
-                        <tr key={service.id}>
+                        <tr key={service.id} className="contenido">
                             <td>{service.id}</td>
                             <td>{service.title}</td>
                             <td>{service.pivot.price}</td>
-                            <td>{service.pivot.updated_at}</td>
+                            <td>
+                                {new Date(
+                                    service.pivot.updated_at
+                                ).toLocaleString()}
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-        </>
+        </div>
     );
 }

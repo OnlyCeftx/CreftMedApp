@@ -12,6 +12,7 @@ import { Head, useForm } from "@inertiajs/react";
 
 export default function CompleteDoctor({ doctorData, specialties, locations }) {
     const { data, setData, post, processing, errors, reset } = useForm({
+        fullname: doctorData.doctor.fullname || "",
         specialty: doctorData.doctor.specialty_id || "",
         location: doctorData.doctor.location_id || "",
         phone: doctorData.doctor.phone || "",
@@ -44,6 +45,26 @@ export default function CompleteDoctor({ doctorData, specialties, locations }) {
                             <p>Completar perfil</p>
                             <form onSubmit={submit}>
                                 <div>
+                                    <InputLabel
+                                        htmlFor="fullname"
+                                        value="Nombre Completo"
+                                    />
+
+                                    <input
+                                        type="text"
+                                        id="fullname"
+                                        value={data.fullname}
+                                        onChange={(e) =>
+                                            setData("fullname", e.target.value)
+                                        }
+                                        className="mt-1 w-full text-black"
+                                        required
+                                    />
+                                    {errors.fullname && (
+                                        <div className="text-red-500">
+                                            {errors.fullname}
+                                        </div>
+                                    )}
                                     <InputLabel
                                         htmlFor="specialty"
                                         value="specialty"

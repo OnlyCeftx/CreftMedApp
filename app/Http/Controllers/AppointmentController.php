@@ -19,21 +19,20 @@ class AppointmentController extends Controller
 
         $user = Auth::user();
         $validated = $request->validate([
-            'doctor_id' => 'required|exists:doctors,id'
+            'doctor_id' => 'required|exists:doctors,id',
+            'date' => 'required|date',
+            'hour' => 'required|date_format:h:i A'
         ]);
         try {
             $appointment = Appointment::create([
                 'patient_id' => $user->patient->id,
                 'doctor_id' => $validated['doctor_id'],
-                // 'date' => now()->format('Y-m-d'),
-                // 'hour' => now()->format('H:i:s'),
+                'date' =>  $validated['date'],
+                'hour' => $validated['hour'],
             ]);
-            return response()->json($appointment, 201);
+            return back()->with('success', 'Cita agendada exitosamente');
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'Error al solicitar cita',
-                'error' => $e->getMessage()
-            ], 500);
+            return back()->with('error', $e->getMessage());
         }
     }
 

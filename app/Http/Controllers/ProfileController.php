@@ -86,6 +86,7 @@ class ProfileController extends Controller
 
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
 
+        $doctor->fullname = $request->fullname;
         $doctor->location_id = $request->location;
         $doctor->specialty_id = $request->specialty;
         $doctor->phone = $request->phone;

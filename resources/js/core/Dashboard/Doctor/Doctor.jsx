@@ -61,7 +61,7 @@ export default function Doctor({ specialties, locations }) {
                 <>Cargando datos del doctor...</>
             ) : (
                 <>
-                    <h3>Panel de Doctor</h3>
+                    <h3 className="font-bold text-4xl">Panel de Doctor</h3>
 
                     <p>
                         Nombre Completo{" "}
@@ -70,7 +70,6 @@ export default function Doctor({ specialties, locations }) {
                                 ? doctor.main.fullname
                                 : "Sin Asignar"}{" "}
                         </span>
-                        <br />
                         Status{" "}
                         <span className="font-bold">
                             {doctor.main && doctor.main.status
@@ -98,25 +97,30 @@ export default function Doctor({ specialties, locations }) {
                     </p>
 
                     <p>Aquí puedes ver tus citas y pacientes.</p>
+                    <div className="flex flex-row">
+                        <div className="flex-1">
+                            {doctor.main && (
+                                <UpdateDataDoctor
+                                    doctor={doctor.main}
+                                    specialties={specialties}
+                                    locations={locations}
+                                    onUpdate={fetchDataDoctor}
+                                />
+                            )}
+                        </div>
+                        <div className="flex-1 ms-2">
+                            {doctor.main && (
+                                <DoctorServiceForm
+                                    doctor={doctor.main}
+                                    onUpdate={fetchDataDoctor}
+                                />
+                            )}
 
-                    {doctor.main && (
-                        <UpdateDataDoctor
-                            doctor={doctor.main}
-                            specialties={specialties}
-                            locations={locations}
-                            onUpdate={fetchDataDoctor}
-                        />
-                    )}
-                    {doctor.main && (
-                        <DoctorServiceForm
-                            doctor={doctor.main}
-                            onUpdate={fetchDataDoctor}
-                        />
-                    )}
-
-                    {doctor.services && (
-                        <ServicesTable services={doctor.services} />
-                    )}
+                            {doctor.services && (
+                                <ServicesTable services={doctor.services} />
+                            )}
+                        </div>
+                    </div>
                 </>
             )}
 

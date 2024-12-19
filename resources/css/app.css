@@ -109,3 +109,13 @@ body {
 .photo-doctor{
     border-radius:50%;
 }
+
+.content-table{
+    @apply w-full rounded-lg border dark:border-zinc-600 m-2;
+}
+.cabecera{
+    @apply text-center hover:bg-gray-400 border-b border-zinc-300;
+}
+.contenido{
+    @apply text-center hover:bg-gray-300 border-b border-zinc-300;
+}
