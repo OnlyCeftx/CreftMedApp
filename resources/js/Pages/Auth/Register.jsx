@@ -34,9 +34,17 @@ export default function Register() {
     return (
         <GuestLayout>
             <Head title="Register" />
-
+            <button
+                className={`${
+                    showDoctorForm ? "bg-blue-400" : "bg-orange-400"
+                } text-white p-2 rounded`}
+                onClick={toggleForm}
+            >
+                Registrar un {showDoctorForm ? "Paciente" : "Doctor"}
+            </button>
             {showPatientForm && (
                 <div className="mt-6 w-full overflow-hidden bg-white px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg dark:bg-gray-800">
+                    <h3 className="font-bold text-2x">Registro Paciente</h3>
                     <form onSubmit={submit}>
                         <p className="text-white">Register patient</p>
                         <div>
@@ -159,6 +167,7 @@ export default function Register() {
             )}
             {showDoctorForm && (
                 <div className="mt-6 w-full overflow-hidden bg-white px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg dark:bg-gray-800">
+                    <h3 className="font-bold text-2x">Registro Doctor</h3>
                     <form onSubmit={submit}>
                         <div>
                             <p className="text-white">Register Doctor</p>
@@ -271,10 +280,6 @@ export default function Register() {
                     </form>
                 </div>
             )}
-
-            <button onClick={toggleForm}>
-                Cambiar a {showDoctorForm ? "Paciente" : "Doctor"}
-            </button>
         </GuestLayout>
     );
 }
