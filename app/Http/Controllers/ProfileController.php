@@ -119,7 +119,9 @@ class ProfileController extends Controller
         $id = $request->doctor_id;
         $doctor = Doctor::findOrFail($id);
 
-        $doctor->services()->detach();
+        if (!($doctor->specialty_id == $request->specialty)) {
+            $doctor->services()->detach();
+        }
 
         $doctor->fullname = $request->fullname;
         $doctor->location_id = $request->location;
