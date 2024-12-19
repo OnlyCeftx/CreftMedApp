@@ -13,6 +13,7 @@ const DoctorsList = () => {
             setLoading(true);
             const response = await axios.get("/get/Doctors");
             setDoctors(response.data);
+            console.log(response.data)
         } catch (error) {
             toast.error("Error al cargar doctores");
         } finally {

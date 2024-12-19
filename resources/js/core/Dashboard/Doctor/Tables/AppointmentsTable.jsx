@@ -3,11 +3,11 @@ export default function ListAppointments({
     onScheduleAppointment,
 }) {
     return (
-        <div>
+        <div className="content-table">
             {appointments && appointments.length > 0 ? (
-                <table>
+                <table className="w-full">
                     <thead>
-                        <tr>
+                        <tr className="cabecera">
                             <th>Cita</th>
                             <th>Paciente</th>
                             <th>Fecha de creación</th>
@@ -19,7 +19,7 @@ export default function ListAppointments({
                     </thead>
                     <tbody>
                         {appointments.map((appointment, index) => (
-                            <tr key={index}>
+                            <tr key={index} className="contenido">
                                 <td>{appointment.id}</td>
 
                                 <td>{appointment.patient?.fullname}</td>

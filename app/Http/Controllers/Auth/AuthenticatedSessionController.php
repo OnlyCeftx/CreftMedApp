@@ -67,6 +67,6 @@ class AuthenticatedSessionController extends Controller
     private function hasCompleteProfile($user)
     {
 
-        return !empty($user->doctor->location_id) && !empty($user->doctor->specialty_id) && !empty($user->doctor->phone);
+        return !empty($user->doctor->fullname) && !empty($user->doctor->location_id) && !empty($user->doctor->specialty_id) && !empty($user->doctor->phone);
     }
 }

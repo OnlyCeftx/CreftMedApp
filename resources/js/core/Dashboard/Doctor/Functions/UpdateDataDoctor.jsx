@@ -4,7 +4,12 @@ import axios from "axios";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 
-export default function UpdateDataDoctor({ doctor, specialties, locations, onUpdate }) {
+export default function UpdateDataDoctor({
+    doctor,
+    specialties,
+    locations,
+    onUpdate,
+}) {
     const [data, setData] = useState({
         doctor_id: doctor.id || "",
         fullname: doctor.fullname || "",
@@ -40,85 +45,97 @@ export default function UpdateDataDoctor({ doctor, specialties, locations, onUpd
     };
 
     return (
-        <form onSubmit={submit} className="flex flex-col">
-            <label htmlFor="fullname">Nombre Completo</label>
-            <input
-                type="text"
-                id="fullname"
-                value={data.fullname}
-                onChange={(e) => setData({ ...data, fullname: e.target.value })}
-                className="mt-1 p-2 border border-gray-300 rounded"
-                required
-            />
-            {errors.fullname && (
-                <div className="text-red-500">{errors.fullname}</div>
-            )}
-
-            <label htmlFor="specialty" className="mt-2">
-                Especialidad
-            </label>
-            <select
-                id="specialty"
-                name="specialty"
-                value={data.specialty}
-                className="mt-1 block w-full text-black p-2 border border-gray-300 rounded"
-                onChange={(e) =>
-                    setData({ ...data, specialty: e.target.value })
-                }
-                required
+        <>
+            <form
+                onSubmit={submit}
+                className="flex flex-col bg-gray-300 rounded p-2"
             >
-                <option value="">Seleccione una especialidad</option>
-                {specialties.map((specialty) => (
-                    <option key={specialty.id} value={specialty.id}>
-                        {specialty.title}
-                    </option>
-                ))}
-            </select>
-            {errors.specialty && (
-                <div className="text-red-500">{errors.specialty}</div>
-            )}
+                <h3 className="font-bold fs-">Actualizar Datos Doctor</h3>
+                <label htmlFor="fullname">Nombre Completo</label>
+                <input
+                    type="text"
+                    id="fullname"
+                    value={data.fullname}
+                    onChange={(e) =>
+                        setData({ ...data, fullname: e.target.value })
+                    }
+                    className="mt-1 p-2 border border-gray-300 rounded"
+                    required
+                />
+                {errors.fullname && (
+                    <div className="text-red-500">{errors.fullname}</div>
+                )}
 
-            <label htmlFor="location" className="mt-2">
-                Ubicación
-            </label>
-            <select
-                id="location"
-                name="location"
-                value={data.location}
-                className="mt-1 block w-full text-black p-2 border border-gray-300 rounded"
-                onChange={(e) => setData({ ...data, location: e.target.value })}
-                required
-            >
-                <option value="">Seleccione una ubicación</option>
-                {locations.map((location) => (
-                    <option key={location.id} value={location.id}>
-                        {location.title}
-                    </option>
-                ))}
-            </select>
-            {errors.location && (
-                <div className="text-red-500">{errors.location}</div>
-            )}
+                <label htmlFor="specialty" className="mt-2">
+                    Especialidad
+                </label>
+                <select
+                    id="specialty"
+                    name="specialty"
+                    value={data.specialty}
+                    className="mt-1 block w-full text-black p-2 border border-gray-300 rounded"
+                    onChange={(e) =>
+                        setData({ ...data, specialty: e.target.value })
+                    }
+                    required
+                >
+                    <option value="">Seleccione una especialidad</option>
+                    {specialties.map((specialty) => (
+                        <option key={specialty.id} value={specialty.id}>
+                            {specialty.title}
+                        </option>
+                    ))}
+                </select>
+                {errors.specialty && (
+                    <div className="text-red-500">{errors.specialty}</div>
+                )}
 
-            <label htmlFor="phone" className="mt-2">
-                Teléfono
-            </label>
-            <PhoneInput
-                international
-                defaultCountry="VE"
-                className="my-2 text-black"
-                value={data.phone}
-                onChange={(value) => setData({ ...data, phone: value })}
-            />
-            {errors.phone && <div className="text-red-500">{errors.phone}</div>}
+                <label htmlFor="location" className="mt-2">
+                    Ubicación
+                </label>
+                <select
+                    id="location"
+                    name="location"
+                    value={data.location}
+                    className="mt-1 block w-full text-black p-2 border border-gray-300 rounded"
+                    onChange={(e) =>
+                        setData({ ...data, location: e.target.value })
+                    }
+                    required
+                >
+                    <option value="">Seleccione una ubicación</option>
+                    {locations.map((location) => (
+                        <option key={location.id} value={location.id}>
+                            {location.title}
+                        </option>
+                    ))}
+                </select>
+                {errors.location && (
+                    <div className="text-red-500">{errors.location}</div>
+                )}
 
-            <button
-                type="submit"
-                disabled={processing}
-                className="mt-4 p-2 bg-blue-500 text-white rounded"
-            >
-                Actualizar
-            </button>
-        </form>
+                <label htmlFor="phone" className="mt-2">
+                    Teléfono
+                </label>
+                <PhoneInput
+                    international
+                    defaultCountry="VE"
+                    className="my-2 text-black"
+                    value={data.phone}
+                    onChange={(value) => setData({ ...data, phone: value })}
+                />
+                {errors.phone && (
+                    <div className="text-red-500">{errors.phone}</div>
+                )}
+
+                <button
+                    type="submit"
+                    disabled={processing}
+                    className="mt-4 p-2 bg-blue-500 text-white rounded"
+                >
+                    Actualizar
+                </button>
+            </form>
+        </>
     );
 }

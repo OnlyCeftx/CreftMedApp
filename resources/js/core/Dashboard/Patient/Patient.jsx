@@ -24,7 +24,7 @@ export default function Patient({specialties}) {
 
     return (
         <>
-            <h3>Panel de Paciente</h3>
+            <h3 className="font-bold text-4xl">Panel de Paciente</h3>
             <p>Aquí puedes ver tus citas y detalles de salud.</p>
             <AppointmentsTable appointments={appointments} />
             <SpecialtyList
